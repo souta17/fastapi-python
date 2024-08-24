@@ -1,0 +1,23 @@
+# version: "3.8"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=elder
+      - POSTGRES_USER=elder
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+  adminer:
+    container_name: adminer
+    image: adminer:latest
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
