@@ -18,6 +18,19 @@ services:
     image: adminer:latest
     restart: always
     ports:
-      - 8080:8080
+      - 8081:8080
     depends_on:
       - postgres
+  
+  # py-server:
+  #   container_name: py-server
+  #   build: .
+  #   command: ["fastapi", "run","src/", "--port","8080","--reload"]
+  #   ports:
+  #     - 8080:8080
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     - DATABASE_URL=postgresql+asyncpg://elder:elder@postgres:5432/fastapi-db
+  #     - SECRET_KEY=f046009c5cf6f2d46f15dffa23737b09
+  #     - JWT_ALGORITHM=HS256
